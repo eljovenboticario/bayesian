@@ -59,9 +59,15 @@ while i < x:
     print ("Ingrese valor", i+1, ": ")
     califs.append(input())
     i+=1 #incrementador
+
+def bayesian(var):
+    inicialcopia[0] = ((inicial[0] * h1[var]) / ((inicial[0] * h1[var]) + (inicial[1] * h2[var]) + (inicial[2] * h3[var]) + (inicial[3] * h4[var])))
+    inicialcopia[1] = ((inicial[1] * h2[var]) / ((inicial[0] * h1[var]) + (inicial[1] * h2[var]) + (inicial[2] * h3[var]) + (inicial[3] * h4[var])))
+    inicialcopia[2] = ((inicial[2] * h3[var]) / ((inicial[0] * h1[var]) + (inicial[1] * h2[var]) + (inicial[2] * h3[var]) + (inicial[3] * h4[var])))
+    inicialcopia[3] = ((inicial[3] * h4[var]) / ((inicial[0] * h1[var]) + (inicial[1] * h2[var]) + (inicial[2] * h3[var]) + (inicial[3] * h4[var])))
+    return inicialcopia
     
-    
-def funcion(inic): #imprime los números
+def imprime(inic): #imprime los números
     j=0
     inicial = inic.copy()
     while j<4:
@@ -71,38 +77,31 @@ def funcion(inic): #imprime los números
     return inicial
 
 print("Ud. ingresó:", califs, "\n")
+
 h=0
 while h < x: #función ultra fregonsota la bayesiana
     if califs[h] == 'A':
-        inicialcopia[0] = ((inicial[0] * h1[0]) / ((inicial[0] * h1[0]) + (inicial[1] * h2[0]) + (inicial[2] * h3[0]) + (inicial[3] * h4[0])))
-        inicialcopia[1] = ((inicial[1] * h2[0]) / ((inicial[0] * h1[0]) + (inicial[1] * h2[0]) + (inicial[2] * h3[0]) + (inicial[3] * h4[0])))
-        inicialcopia[2] = ((inicial[2] * h3[0]) / ((inicial[0] * h1[0]) + (inicial[1] * h2[0]) + (inicial[2] * h3[0]) + (inicial[3] * h4[0])))
-        inicialcopia[3] = ((inicial[3] * h4[0]) / ((inicial[0] * h1[0]) + (inicial[1] * h2[0]) + (inicial[2] * h3[0]) + (inicial[3] * h4[0])))
+        variable = 0
+        inicialcopia = bayesian(variable)
         print("== Iteración", h+1, "==")
         print("== Se eligió A ==\n")
-        inicial = funcion(inicialcopia)
+        inicial = imprime(inicialcopia)
     if califs[h] == 'B':
-        inicialcopia[0] = ((inicial[0] * h1[1]) / ((inicial[0] * h1[1]) + (inicial[1] * h2[1]) + (inicial[2] * h3[1]) + (inicial[3] * h4[1])))
-        inicialcopia[1] = ((inicial[1] * h2[1]) / ((inicial[0] * h1[1]) + (inicial[1] * h2[1]) + (inicial[2] * h3[1]) + (inicial[3] * h4[1])))
-        inicialcopia[2] = ((inicial[2] * h3[1]) / ((inicial[0] * h1[1]) + (inicial[1] * h2[1]) + (inicial[2] * h3[1]) + (inicial[3] * h4[1])))
-        inicialcopia[3] = ((inicial[3] * h4[1]) / ((inicial[0] * h1[1]) + (inicial[1] * h2[1]) + (inicial[2] * h3[1]) + (inicial[3] * h4[1])))
+        variable = 1
+        inicialcopia = bayesian(variable)
         print("== Iteración", h+1, "==")
         print("== Se eligió B ==\n")
-        inicial = funcion(inicialcopia)
+        inicial = imprime(inicialcopia)
     if califs[h] == 'C':
-        inicialcopia[0] = ((inicial[0] * h1[2]) / ((inicial[0] * h1[2]) + (inicial[1] * h2[2]) + (inicial[2] * h3[2]) + (inicial[3] * h4[2])))
-        inicialcopia[1] = ((inicial[1] * h2[2]) / ((inicial[0] * h1[2]) + (inicial[1] * h2[2]) + (inicial[2] * h3[2]) + (inicial[3] * h4[2])))
-        inicialcopia[2] = ((inicial[2] * h3[2]) / ((inicial[0] * h1[2]) + (inicial[1] * h2[2]) + (inicial[2] * h3[2]) + (inicial[3] * h4[2])))
-        inicialcopia[3] = ((inicial[3] * h4[2]) / ((inicial[0] * h1[2]) + (inicial[1] * h2[2]) + (inicial[2] * h3[2]) + (inicial[3] * h4[2])))
+        variable = 2
+        inicialcopia = bayesian(variable)
         print("== Iteración", h+1, "==")
         print("== Se eligió C ==\n")
-        inicial = funcion(inicialcopia)
+        inicial = imprime(inicialcopia)
     if califs[h] == 'D':
-        inicialcopia[0] = ((inicial[0] * h1[3]) / ((inicial[0] * h1[3]) + (inicial[1] * h2[3]) + (inicial[2] * h3[3]) + (inicial[3] * h4[3])))
-        inicialcopia[1] = ((inicial[1] * h2[3]) / ((inicial[0] * h1[3]) + (inicial[1] * h2[3]) + (inicial[2] * h3[3]) + (inicial[3] * h4[3])))
-        inicialcopia[2] = ((inicial[2] * h3[3]) / ((inicial[0] * h1[3]) + (inicial[1] * h2[3]) + (inicial[2] * h3[3]) + (inicial[3] * h4[3])))
-        inicialcopia[3] = ((inicial[3] * h4[3]) / ((inicial[0] * h1[3]) + (inicial[1] * h2[3]) + (inicial[2] * h3[3]) + (inicial[3] * h4[3])))
+        variable = 3
+        inicialcopia = bayesian(variable)
         print("== Iteración", h+1, "==")
         print("== Se eligió D ==\n")
-        inicial = funcion(inicialcopia)
+        inicial = imprime(inicialcopia)
     h+=1
